@@ -13,7 +13,7 @@ const params = {
 
 module.exports = function() {
     const strategy = new Strategy(params, (payload, done) => {
-        const user = passportuser.findById(payload.id, (err, user) => {
+        passportuser.findById(payload.id, (err, user) => {
             if(err) {
                 return done(new Error('User not found'), null)
             } else if(payload.expire<=Date.now()) {
